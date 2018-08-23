@@ -49,6 +49,5 @@ const CUSTOM_FILL = {
   "WV": {fill: "hsla(82, 0%, 52%, 1.0)"},
   "WI": {fill: "hsla(82, 0%, 39%, 1.0)"},
   "WY": {fill: "hsla(82, 0%, 54%, 1.0)"}
-}
-
+};
 export default CUSTOM_FILL

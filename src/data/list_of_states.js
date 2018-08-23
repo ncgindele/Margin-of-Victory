@@ -50,6 +50,6 @@ const US_STATES = {
     "WV": "West Virginia",
     "WI": "Wisconsin",
     "WY": "Wyoming"
-}
+};
 
 export default US_STATES
