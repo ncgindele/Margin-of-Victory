@@ -63,10 +63,10 @@ export function getBarData(party, stateProp, distProp) {
     }
   }
   // for each state
-  for (var i = 0; i < CONGRESS_DATA.states.length; i++) {
+  for (let i = 0; i < CONGRESS_DATA.states.length; i++) {
     state = CONGRESS_DATA.states[i];
     //for each race
-    for (var j = 0; j < state.races.length; j++) {
+    for (let j = 0; j < state.races.length; j++) {
       race = state.races[j]
       if (satisfyParty(race.candidates[0], party)) {
         if (currentState === state.key) {
