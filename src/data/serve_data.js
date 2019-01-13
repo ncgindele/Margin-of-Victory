@@ -6,10 +6,10 @@ export function getCandidates(districtCode) {
     return [];
   }
   const foundState = CONGRESS_DATA.states.find((state) => {
-    return districtCode.substring(0, 2) == state.key;
+    return districtCode.substring(0, 2) === state.key;
   });
   const foundRace = foundState.races.find((race) => {
-    return race.code == districtCode;
+    return race.code === districtCode;
   });
   return foundRace
     ? foundRace.candidates : [];
@@ -17,9 +17,8 @@ export function getCandidates(districtCode) {
 
 // Provides a list of congressional districts given a state
 export function getDistrictsFromState(currentState) {
-  
   const stateData = CONGRESS_DATA.states.find((state) => {
-    if (state.key == currentState) {
+    if (state.key === currentState) {
       return state;
     }
   });
@@ -37,7 +36,6 @@ export function getDistrictsFromState(currentState) {
    state, and currently selected district arguments. Adjustments to the display
    opacity are made on the basis of active/unactive status */
 export function getBarData(party, stateProp, distProp) {
-
   const currentState = (stateProp ? stateProp.value : null);
   const currentDistrict = (distProp ? distProp.value : null);
   let data = [];
@@ -56,9 +54,9 @@ export function getBarData(party, stateProp, distProp) {
     defaultOpacity = 1;
   }
   const satisfyParty = (candidate, party) => {
-    if (candidate.party == party) {
+    if (candidate.party === party) {
       return true;
-    } else if (party == null && candidate.party != 'Republican' && candidate.party != 'Democrat') {
+    } else if (party === null && candidate.party !== 'Republican' && candidate.party !== 'Democrat') {
       return true;
     } else {
       return false;
@@ -71,8 +69,8 @@ export function getBarData(party, stateProp, distProp) {
     for (var j = 0; j < state.races.length; j++) {
       race = state.races[j]
       if (satisfyParty(race.candidates[0], party)) {
-        if (currentState == state.key) {
-          if (currentDistrict == race.code) {
+        if (currentState === state.key) {
+          if (currentDistrict === race.code) {
             data.push({x: race.rank, y: race.margin});
           } else {
             data.push({x: race.rank, y: race.margin, opacity: stateOpacity});
