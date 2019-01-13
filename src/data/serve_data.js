@@ -1,7 +1,7 @@
 import CONGRESS_DATA from './2016_congress.js';
 
+// Provides candidates in a given congressional district
 export function getCandidates(districtCode) {
-  // Provides candidates in a given congressional district
   if (!districtCode) {
     return [];
   }
@@ -15,8 +15,9 @@ export function getCandidates(districtCode) {
     ? foundRace.candidates : [];
 }
 
+// Provides a list of congressional districts given a state
 export function getDistrictsFromState(currentState) {
-  // Provides a list of congressional districts given a state
+  
   const stateData = CONGRESS_DATA.states.find((state) => {
     if (state.key == currentState) {
       return state;
@@ -32,10 +33,11 @@ export function getDistrictsFromState(currentState) {
   }
 }
 
-export function getBarData(party, stateProp, distProp) {
-  /* Returns bargraph data when passed political party, currently selected
+/* Returns bargraph data when passed political party, currently selected
    state, and currently selected district arguments. Adjustments to the display
    opacity are made on the basis of active/unactive status */
+export function getBarData(party, stateProp, distProp) {
+
   const currentState = (stateProp ? stateProp.value : null);
   const currentDistrict = (distProp ? distProp.value : null);
   let data = [];
@@ -62,11 +64,11 @@ export function getBarData(party, stateProp, distProp) {
       return false;
     }
   }
+  // for each state
   for (var i = 0; i < CONGRESS_DATA.states.length; i++) {
-    // for each state
     state = CONGRESS_DATA.states[i];
+    //for each race
     for (var j = 0; j < state.races.length; j++) {
-      //for each race
       race = state.races[j]
       if (satisfyParty(race.candidates[0], party)) {
         if (currentState == state.key) {
